@@ -17,7 +17,7 @@ app_flask = Flask(__name__)
 
 @app_flask.route('/')
 def home():
-    return "Bot Kamus Tetum-Dawan sedang aktif!"
+    return "Bot Disionariu Tetum-Baikenu ativu hela!"
 
 def run_web():
     port = int(os.environ.get("PORT", 10000))
@@ -28,36 +28,36 @@ def run_web():
 # Anda bisa terus menambah daftar kata di sini nanti
 KAMUS_TETUM_DAWAN = {
     "bee": {
-        "dawan": "Nono",
+        "dawan": "Oel",
         "kelas": "Noun (Kata Benda)",
-        "contoh": "Bee mamarin (Air bersih)"
+        "contoh": "Bee manas (Oe maputu)"
     },
     "haan": {
-        "dawan": "Kaen",
+        "dawan": "Tah",
         "kelas": "Verb (Kata Kerja)",
-        "contoh": "Hau hakarak haan tebes."
+        "contoh": "Mai ita haan (Oum he tah)"
     },
     "bainhira": {
-        "dawan": "Maupun / Tabes",
+        "dawan": "Leka",
         "kelas": "Adverb",
-        "contoh": "Bainhira ita bá..."
+        "contoh": "Bainhira ita bá (Leka ni tnao)"
     },
     "ema": {
         "dawan": "Atoin",
         "kelas": "Noun",
         "contoh": "Ema Oecusse (Atoin Meto)"
     },
-    "moris": {
-        "dawan": "Mauri",
+    "di'ak": {
+        "dawan": "Naleok",
         "kelas": "Adjective / Verb",
-        "contoh": "Moris di'ak."
+        "contoh": "Nia di'ak loos (In naleok neuba)"
     }
 }
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Ola! 🤖 Bot Kamus **Tetum ➔ Dawan (Uab Meto)**.\n\n"
-        "Silakan ketik kata dalam bahasa **Tetum**, dan bot akan memberikan padanannya ke bahasa Dawan."
+        "Ola! 🤖 Bot Disionariu **Tetum ➔ Baikenu (Uab Meto)**.\n\n"
+        "Favor hakerek liafuan **Tetum**, no bot sei traduz ba Baikenu."
     )
 
 async def translate_tetum_to_dawan(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -96,5 +96,5 @@ if __name__ == '__main__':
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), translate_tetum_to_dawan))
     
-    print("Bot Kamus Tetum-Dawan lao hela...")
+    print("Bot Disionariu Tetum-Baikenu lao hela...")
     application.run_polling()
